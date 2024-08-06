@@ -1,0 +1,20 @@
+[git_branch]
+truncation_symbol = ""
+
+[python]
+pyenv_version_name = true
+
+[kubernetes]
+format = 'on [$context \($namespace\)](dimmed green) '
+disabled = false
+contexts = [
+  { context_pattern = "dev.local.cluster.k8s", context_alias = "dev" },
+  { context_pattern = "gke_.*_(?P<var_cluster>[\\w-]+)", context_alias = "$var_cluster" },
+]
+
+[kubernetes.user_aliases]
+"dev.local.cluster.k8s" = "dev"
+"root/.*" = "root"
+
+[gcloud]
+format = 'on [$symbol$account(@$domain)(\($project\))]($style) '
