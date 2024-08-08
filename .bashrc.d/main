@@ -1,1 +1,4 @@
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export KUBE_CONFIG_PATH=/home/masen/.kube/config
+
 eval "$(starship init bash)"

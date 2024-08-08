@@ -1,2 +1,0 @@
-export GCM_CREDENTIAL_STORE=gpg
-export BROWSER=wslview
