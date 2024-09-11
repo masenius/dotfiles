@@ -2,3 +2,7 @@ alias gauth='gcloud auth login && gcloud auth application-default login'
 alias k='kubectl'
 alias kk='EDITOR=nvim k9s'
 alias xo='xdg-open'
+
+# Laptop
+alias wgup='wg-quick up ~/.wg/peer_laptop.conf'
+alias wgdown='wg-quick down ~/.wg/peer_laptop.conf'
