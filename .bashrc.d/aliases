@@ -1,1 +1,4 @@
+alias gauth='gcloud auth login && gcloud auth application-default login'
 alias k='kubectl'
+alias kk='EDITOR=nvim k9s'
+alias xo='xdg-open'
