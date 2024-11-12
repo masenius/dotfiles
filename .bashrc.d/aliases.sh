@@ -1,6 +1,7 @@
 alias gauth='gcloud auth login && gcloud auth application-default login'
 alias k='kubectl'
 alias kk='k9s'
+alias v='nvim'
 alias xo='xdg-open'
 
 # Laptop
