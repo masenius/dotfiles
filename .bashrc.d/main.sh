@@ -2,8 +2,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export KUBE_CONFIG_PATH=$HOME/.kube/config
 export EDITOR=nvim
 
-source $HOME/.cargo/env
-
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
