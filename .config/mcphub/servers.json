@@ -21,7 +21,7 @@
         "--transport sse-only"
       ],
       "command": "npx",
-      "disabled": false
+      "disabled": true
     }
   }
 }
