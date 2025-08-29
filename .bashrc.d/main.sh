@@ -22,4 +22,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # TIDB
 export PATH="$HOME/.tiup/bin:$PATH"
 
+bind -x '"\t": fzf_bash_completion'
+eval "$(zoxide init bash)"
 eval "$(starship init bash)"
