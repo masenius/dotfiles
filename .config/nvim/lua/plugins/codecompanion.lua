@@ -9,9 +9,9 @@ return {
     --refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua
     strategies = {
       --NOTE: Change the adapter as required
-      chat = { adapter = "copilot" },
-      inline = { adapter = "copilot" },
-      cmd = { adapter = "copilot" },
+      chat = { adapter = "copilot", model = "gpt-5" },
+      inline = { adapter = "copilot", model = "gpt-5" },
+      cmd = { adapter = "copilot", model = "gpt-5" },
       -- chat = { adapter = "ollama" },
       -- inline = { adapter = "ollama" },
     },
