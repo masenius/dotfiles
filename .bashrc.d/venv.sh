@@ -1,29 +1,29 @@
 #!/bin/bash
 
-function cd() {
-  builtin cd "$@"
+_auto_venv() {
+  local venv_path=""
+  local dir="$PWD"
 
-  if [[ -z "$VIRTUAL_ENV" ]]; then
-    ## If env folder is found then activate the vitualenv
-    if [[ -d ./.venv ]]; then
-      source ./.venv/bin/activate
+  while [ "$dir" != "/" ]; do
+    if [ -f "$dir/.venv/bin/activate" ]; then
+      venv_path="$dir/.venv"
+      break
     fi
-  else
-    ## check the current folder belong to earlier VIRTUAL_ENV folder
-    # if yes then do nothing
-    # else deactivate
-    parentdir="$(dirname "$VIRTUAL_ENV")"
-    if [[ "$PWD"/ != "$parentdir"/* ]]; then
-      deactivate
+    dir="$(dirname "$dir")"
+  done
+
+  if [ -n "$VIRTUAL_ENV" ]; then
+    current_project="${VIRTUAL_ENV%/.venv}"
+    if [ -z "$venv_path" ] || [ "$venv_path" != "$current_project/.venv" ]; then
+      deactivate 2>/dev/null || true
     fi
+  fi
+
+  if [ -z "$VIRTUAL_ENV" ] && [ -n "$venv_path" ]; then
+    # shellcheck disable=SC1090
+    . "$venv_path/bin/activate"
   fi
 }
 
-function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-  yazi "$@" --cwd-file="$tmp"
-  if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    builtin cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
-}
+# Run before each prompt (catches directory changes)
+PROMPT_COMMAND="_auto_venv${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
