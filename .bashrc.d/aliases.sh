@@ -4,6 +4,7 @@ alias kk='k9s'
 alias v='nvim'
 alias xo='xdg-open'
 alias ll='ls -al'
+alias oc='opencode'
 
 # Laptop
 alias wgup='wg-quick up ~/.wg/peer_laptop.conf'
