@@ -22,6 +22,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # TIDB
 export PATH="$HOME/.tiup/bin:$PATH"
 
+# opencode
+export PATH=/home/masen/.opencode/bin:$PATH
+
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 eval "$(fzf --bash)"
 eval "$(zoxide init bash)"
 eval "$(starship init bash)"
