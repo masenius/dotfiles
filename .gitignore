@@ -1,1 +1,4 @@
-/.bashrc.d/local
+/bash/.bashrc.d/local
+/.dotter/local.toml
+/.dotter/cache.toml
+/.dotter/cache/
