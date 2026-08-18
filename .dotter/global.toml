@@ -1,0 +1,24 @@
+[settings]
+default_target_type = "symbolic"
+
+[bash.files]
+"bash/.bashrc"   = "~/.bashrc"
+"bash/.bashrc.d" = "~/.bashrc.d"
+
+[nvim.files]
+"nvim/.config/nvim" = "~/.config/nvim"
+
+[kitty.files]
+"kitty/.config/kitty" = "~/.config/kitty"
+
+[k9s.files]
+"k9s/.config/k9s" = "~/.config/k9s"
+
+[starship.files]
+"starship/.config/starship.toml" = "~/.config/starship.toml"
+
+[mcphub.files]
+"mcphub/.config/mcphub" = "~/.config/mcphub"
+
+[variables]
+# reserved for future per-machine values
