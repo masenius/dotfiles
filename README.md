@@ -8,7 +8,8 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 
 | Package    | Deploys to              |
 | ---------- | ----------------------- |
-| `bash`     | `~/.bashrc`, `~/.bashrc.d/` |
+| `bash`     | `~/.bashrc`, `~/.bashrc.d/` (Linux) |
+| `zsh`      | `~/.zshrc`, `~/.zsh.d/` (macOS) |
 | `nvim`     | `~/.config/nvim/`       |
 | `kitty`    | `~/.config/kitty/`      |
 | `k9s`      | `~/.config/k9s/`        |
@@ -44,19 +45,30 @@ cd ~/dotfiles
 
 # 2. Run the setup script. It writes .dotter/local.toml (gitignored,
 #    per-machine), previews the changes, then deploys the symlinks.
+#    By default ALL packages are deployed.
 ./setup.sh
 
-# To deploy a custom package set, pass names as arguments:
-./setup.sh bash nvim starship
+# Exclude specific packages with -e/--exclude (repeatable). e.g. on macOS
+# you'd typically skip the Linux-oriented bash package:
+./setup.sh -e bash
 
-# Use -f/--force to overwrite existing files in $HOME (destructive):
+# Exclude multiple:
+./setup.sh -e bash -e mcphub
+
+# Use -f/--force to overwrite existing files in $HOME (destructive; also
+# passes --noconfirm so it never blocks on prompts):
 ./setup.sh --force
+./setup.sh -f -e bash
 ```
+
+Dotter's package selection is include-only (`local.toml`'s `packages` list),
+so `setup.sh` emulates excludes: it derives the full package set from
+`.dotter/global.toml` and writes everything except the `-e` packages.
 
 If a target file already exists in `$HOME`, Dotter skips it rather than
 overwriting. Back up and remove the conflicting file first, then re-run
-`dotter deploy`. To overwrite unconditionally, use `dotter deploy --force`
-(destructive — be sure you have backups).
+`dotter deploy`. To overwrite unconditionally, use `./setup.sh --force`
+(or `dotter deploy --force`) — destructive, be sure you have backups.
 
 ## Everyday usage
 
@@ -76,6 +88,9 @@ directly — just `git commit` the change.
 - **`~/.bashrc.d/local`** — `.bashrc` sources every file in `~/.bashrc.d/`.
   Drop machine-specific shell settings in `bash/.bashrc.d/local`; it is
   gitignored, so it stays out of version control while still being symlinked.
+- **`~/.zsh.d/local`** — `.zshrc` sources every file in `~/.zsh.d/`. Same
+  pattern as bash: put machine-specific zsh settings in `zsh/.zsh.d/local`
+  (gitignored, still symlinked).
 - **`.dotter/local.toml`** — controls which packages deploy per machine
   (gitignored).
 
@@ -87,6 +102,7 @@ dotfiles/
 │   ├── global.toml    # package definitions + target mappings (tracked)
 │   └── local.toml     # per-machine package selection (gitignored)
 ├── bash/     .bashrc, .bashrc.d/
+├── zsh/      .zshrc, .zsh.d/
 ├── nvim/     .config/nvim/
 ├── kitty/    .config/kitty/
 ├── k9s/      .config/k9s/
@@ -105,5 +121,6 @@ dotfiles/
    [foo.files]
    "foo/.config/foo" = "~/.config/foo"
    ```
-3. Enable it in `.dotter/local.toml`'s `packages` list.
-4. `dotter deploy -v`.
+3. Run `./setup.sh` (it auto-discovers the new package from `global.toml`
+   and deploys it), or add it manually to `.dotter/local.toml`'s `packages`
+   list and run `dotter deploy -v`.
