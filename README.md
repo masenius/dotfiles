@@ -14,6 +14,7 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `k9s`      | `~/.config/k9s/`        |
 | `starship` | `~/.config/starship.toml` |
 | `mcphub`   | `~/.config/mcphub/`     |
+| `zellij`   | `~/.config/zellij/`     |
 
 ## Prerequisites
 
@@ -32,6 +33,7 @@ Tools referenced by the shell/config (install the ones you use):
 - **[kitty](https://sw.kovidgoyal.net/kitty/)** — terminal
 - **[k9s](https://k9scli.io/)** — Kubernetes TUI
 - **mcphub** — MCP server config
+- **[zellij](https://zellij.dev/)** — terminal multiplexer
 
 ## Setup on a new machine
 
@@ -40,16 +42,15 @@ Tools referenced by the shell/config (install the ones you use):
 git clone https://github.com/masenius/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
-# 2. Select which packages to deploy on THIS machine.
-#    local.toml is gitignored (per-machine). Adjust the list as needed.
-printf 'packages = ["bash", "nvim", "kitty", "k9s", "starship", "mcphub"]\n' \
-  > .dotter/local.toml
+# 2. Run the setup script. It writes .dotter/local.toml (gitignored,
+#    per-machine), previews the changes, then deploys the symlinks.
+./setup.sh
 
-# 3. Preview what will happen (recommended)
-dotter deploy --dry-run -v
+# To deploy a custom package set, pass names as arguments:
+./setup.sh bash nvim starship
 
-# 4. Deploy (creates the symlinks)
-dotter deploy -v
+# Use -f/--force to overwrite existing files in $HOME (destructive):
+./setup.sh --force
 ```
 
 If a target file already exists in `$HOME`, Dotter skips it rather than
@@ -90,7 +91,9 @@ dotfiles/
 ├── kitty/    .config/kitty/
 ├── k9s/      .config/k9s/
 ├── starship/ .config/starship.toml
-└── mcphub/   .config/mcphub/
+├── mcphub/   .config/mcphub/
+├── zellij/   .config/zellij/
+└── setup.sh  # deploy helper for new machines
 ```
 
 ## Adding a new config
