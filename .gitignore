@@ -1,4 +1,5 @@
 /bash/.bashrc.d/local
+/zsh/.zsh.d/local
 /.dotter/local.toml
 /.dotter/cache.toml
 /.dotter/cache/

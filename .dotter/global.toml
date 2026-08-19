@@ -5,6 +5,10 @@ default_target_type = "symbolic"
 "bash/.bashrc"   = "~/.bashrc"
 "bash/.bashrc.d" = "~/.bashrc.d"
 
+[zsh.files]
+"zsh/.zshrc" = "~/.zshrc"
+"zsh/.zsh.d" = "~/.zsh.d"
+
 [nvim.files]
 "nvim/.config/nvim" = "~/.config/nvim"
 
