@@ -20,5 +20,8 @@ default_target_type = "symbolic"
 [mcphub.files]
 "mcphub/.config/mcphub" = "~/.config/mcphub"
 
+[zellij.files]
+"zellij/.config/zellij" = "~/.config/zellij"
+
 [variables]
 # reserved for future per-machine values

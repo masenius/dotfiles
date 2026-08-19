@@ -1,0 +1,22 @@
+// GitHub Dark Zellij Theme
+// Based on GitHub's Primer dark color palette
+// Add this file to your `CONFIG_DIR/themes` directory as described here:
+// https://zellij.dev/documentation/themes#getting-zellij-to-pick-up-the-theme
+
+themes {
+    github_dark {
+        fg "#e6edf3"
+        bg "#0d1117"
+        // Black should match the terminal background color
+        // This ensures the top and bottom bars are transparent
+        black "#0d1117"
+        red "#ff7b72"
+        green "#3fb950"
+        yellow "#d29922"
+        blue "#58a6ff"
+        magenta "#bc8cff"
+        cyan "#39c5cf"
+        white "#e6edf3"
+        orange "#f0883e"
+    }
+}
