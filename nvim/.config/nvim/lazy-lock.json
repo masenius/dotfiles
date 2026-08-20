@@ -50,6 +50,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6" },
   "rustaceanvim": { "branch": "master", "commit": "b25d186481624964523fee34f44c529b101c7435" },
   "sidekick.nvim": { "branch": "main", "commit": "208e1c5b8170c01fd1d07df0139322a76479b235" },
+  "smart-splits.nvim": { "branch": "master", "commit": "289971cfdbc7f7b1c91670a228b239d870130af7" },
   "snacks.nvim": { "branch": "main", "commit": "882c996cf28183f4d63640de0b4c02ec886d01f2" },
   "telescope-terraform-doc.nvim": { "branch": "main", "commit": "66987fac94d12704fdfd90b857f4f648e31251c9" },
   "telescope-terraform.nvim": { "branch": "main", "commit": "072c97023797ca1a874668aaa6ae0b74425335df" },
@@ -63,6 +64,5 @@
   "vim-dadbod": { "branch": "master", "commit": "6d1d41da4873a445c5605f2005ad2c68c99d8770" },
   "vim-dadbod-completion": { "branch": "master", "commit": "a8dac0b3cf6132c80dc9b18bef36d4cf7a9e1fe6" },
   "vim-dadbod-ui": { "branch": "master", "commit": "afd07819d8efcefc3317205b855ad4e3513b0011" },
-  "vim-kitty-navigator": { "branch": "master", "commit": "c40c7d6181fa44fade771980952c60c1d89c28ea" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" }
 }
