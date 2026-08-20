@@ -85,15 +85,15 @@ keybinds clear-defaults=true {
         bind "tab" { MovePane; }
     }
     scroll {
-        bind "Alt left" { MoveFocusOrTab "left"; SwitchToMode "normal"; }
+        bind "Alt left" { GoToPreviousTab; SwitchToMode "normal"; }
         bind "Alt down" { MoveFocus "down"; SwitchToMode "normal"; }
         bind "Alt up" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "Alt right" { MoveFocusOrTab "right"; SwitchToMode "normal"; }
+        bind "Alt right" { GoToNextTab; SwitchToMode "normal"; }
         bind "e" { EditScrollback; SwitchToMode "normal"; }
-        bind "Alt h" { MoveFocusOrTab "left"; SwitchToMode "normal"; }
+        bind "Alt h" { MoveFocus "left"; SwitchToMode "normal"; }
         bind "Alt j" { MoveFocus "down"; SwitchToMode "normal"; }
         bind "Alt k" { MoveFocus "up"; SwitchToMode "normal"; }
-        bind "Alt l" { MoveFocusOrTab "right"; SwitchToMode "normal"; }
+        bind "Alt l" { MoveFocus "right"; SwitchToMode "normal"; }
         bind "s" { SwitchToMode "entersearch"; SearchInput 0; }
     }
     search {
@@ -180,13 +180,13 @@ keybinds clear-defaults=true {
         bind "Ctrl o" { SwitchToMode "session"; }
     }
     shared_except "locked" "scroll" {
-        bind "Alt left" { MoveFocusOrTab "left"; }
+        bind "Alt left" { GoToPreviousTab; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
+        bind "Alt right" { GoToNextTab; }
         bind "Alt h" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"
+                name "move_focus"
                 payload "left"
                 move_mod "alt"
             }
@@ -207,7 +207,7 @@ keybinds clear-defaults=true {
         }
         bind "Alt l" {
             MessagePlugin "https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm" {
-                name "move_focus_or_tab"
+                name "move_focus"
                 payload "right"
                 move_mod "alt"
             }
