@@ -8,7 +8,7 @@
 # By default, deploys ALL packages defined in .dotter/global.toml.
 # Use -e/--exclude to skip specific packages (repeatable), e.g.:
 #   ./setup.sh -e bash            # everything except bash
-#   ./setup.sh -e bash -e mcphub  # exclude multiple
+#   ./setup.sh -e bash            # exclude multiple
 #
 # Use -f/--force to pass --force (and --noconfirm) to dotter, overwriting
 # existing files in $HOME (destructive — be sure you have backups).
