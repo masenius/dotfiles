@@ -14,7 +14,6 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `kitty`    | `~/.config/kitty/`      |
 | `k9s`      | `~/.config/k9s/`        |
 | `starship` | `~/.config/starship.toml` |
-| `mcphub`   | `~/.config/mcphub/`     |
 | `zellij`   | `~/.config/zellij/`     |
 
 ## Prerequisites
@@ -33,7 +32,6 @@ Tools referenced by the shell/config (install the ones you use):
 - **[fzf](https://github.com/junegunn/fzf)** — fuzzy finder
 - **[kitty](https://sw.kovidgoyal.net/kitty/)** — terminal
 - **[k9s](https://k9scli.io/)** — Kubernetes TUI
-- **mcphub** — MCP server config
 - **[zellij](https://zellij.dev/)** — terminal multiplexer
 
 ## Setup on a new machine
@@ -53,7 +51,7 @@ cd ~/dotfiles
 ./setup.sh -e bash
 
 # Exclude multiple:
-./setup.sh -e bash -e mcphub
+./setup.sh -e bash -e zellij
 
 # Use -f/--force to overwrite existing files in $HOME (destructive; also
 # passes --noconfirm so it never blocks on prompts):
@@ -107,7 +105,6 @@ dotfiles/
 ├── kitty/    .config/kitty/
 ├── k9s/      .config/k9s/
 ├── starship/ .config/starship.toml
-├── mcphub/   .config/mcphub/
 ├── zellij/   .config/zellij/
 └── setup.sh  # deploy helper for new machines
 ```

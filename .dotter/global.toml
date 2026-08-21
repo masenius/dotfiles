@@ -21,9 +21,6 @@ default_target_type = "symbolic"
 [starship.files]
 "starship/.config/starship.toml" = "~/.config/starship.toml"
 
-[mcphub.files]
-"mcphub/.config/mcphub" = "~/.config/mcphub"
-
 [zellij.files]
 "zellij/.config/zellij" = "~/.config/zellij"
 
