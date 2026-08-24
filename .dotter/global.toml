@@ -24,5 +24,8 @@ default_target_type = "symbolic"
 [zellij.files]
 "zellij/.config/zellij" = "~/.config/zellij"
 
+[ssh.files]
+"ssh/config" = "~/.ssh/config"
+
 [variables]
 # reserved for future per-machine values

@@ -86,4 +86,8 @@ if [ -n "$force" ]; then
 fi
 dotter "${deploy_args[@]}"
 
+# SSH requires strict permissions on config files. Git doesn't track file
+# modes beyond the executable bit, so enforce 600 after checkout/symlink.
+chmod 600 "$HOME/.ssh/config"
+
 echo "Done."
