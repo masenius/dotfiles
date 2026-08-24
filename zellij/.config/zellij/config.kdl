@@ -213,9 +213,6 @@ keybinds clear-defaults=true {
             }
         }
     }
-    shared_except "locked" "scroll" "search" "tmux" {
-        bind "Ctrl b" { SwitchToMode "tmux"; }
-    }
     shared_except "locked" "scroll" "search" {
         bind "Ctrl s" { SwitchToMode "scroll"; }
     }

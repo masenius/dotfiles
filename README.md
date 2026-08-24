@@ -15,6 +15,7 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `k9s`      | `~/.config/k9s/`        |
 | `starship` | `~/.config/starship.toml` |
 | `zellij`   | `~/.config/zellij/`     |
+| `ssh`      | `~/.ssh/config`          |
 
 ## Prerequisites
 
@@ -106,6 +107,7 @@ dotfiles/
 ├── k9s/      .config/k9s/
 ├── starship/ .config/starship.toml
 ├── zellij/   .config/zellij/
+├── ssh/      config
 └── setup.sh  # deploy helper for new machines
 ```
 
