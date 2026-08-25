@@ -10,7 +10,7 @@ _auto_venv() {
       venv_path="$dir/.venv"
       break
     fi
-    dir="$(dirname "$dir")"
+    dir="${dir:h}"
   done
 
   if [ -n "$VIRTUAL_ENV" ]; then
