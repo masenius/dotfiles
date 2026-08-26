@@ -6,6 +6,7 @@ alias zj='zellij'
 alias xo='xdg-open'
 alias ll='ls -al'
 alias oc='opencode'
+alias lg='lazygit'
 
 # Laptop
 alias wgup='wg-quick up ~/.wg/peer_laptop.conf'
