@@ -296,8 +296,9 @@ keybinds clear-defaults=true {
 // changing these requires a restart to take effect
 plugins {
     about location="zellij:about"
-    compact-bar location="zellij:compact-bar" {
-        tooltip "F1"
+    compact-bar location="https://github.com/masenius/zellij-compact-bar-improved/releases/latest/download/compact-bar.wasm" {
+        tab_format "{index}. {smart}"
+        pane_format "{process}"
     }
     configuration location="zellij:configuration"
     filepicker location="zellij:strider" {
