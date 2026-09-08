@@ -27,5 +27,8 @@ default_target_type = "symbolic"
 [ssh.files]
 "ssh/config" = "~/.ssh/config"
 
+[opencode.files]
+"opencode/.config/opencode/opencode.jsonc" = "~/.config/opencode/opencode.jsonc"
+
 [variables]
 # reserved for future per-machine values
