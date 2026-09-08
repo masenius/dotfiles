@@ -16,6 +16,7 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `starship` | `~/.config/starship.toml` |
 | `zellij`   | `~/.config/zellij/`     |
 | `ssh`      | `~/.ssh/config`          |
+| `opencode` | `~/.config/opencode/opencode.jsonc` |
 
 ## Prerequisites
 
@@ -108,6 +109,7 @@ dotfiles/
 ├── starship/ .config/starship.toml
 ├── zellij/   .config/zellij/
 ├── ssh/      config
+├── opencode/ .config/opencode/opencode.jsonc
 └── setup.sh  # deploy helper for new machines
 ```
 
