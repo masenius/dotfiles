@@ -58,20 +58,9 @@ export K9S_CONFIG_DIR=$HOME/.config/k9s
 
 eval "$(starship init zsh)"
 
-# Lazy-load SDKMAN: sourcing it eagerly costs ~70ms on every shell start.
-# It initialises on first use of sdk/java/mvn/gradle/kotlin/spring/jar/javac.
+# SDKMAN
 export SDKMAN_DIR="$HOME/.sdkman"
-_sdkman_lazy_init() {
-  unset -f sdk java javac jar mvn gradle kotlin spring
-  [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-  # Re-invoke the original command now that SDKMAN is loaded
-  "$@"
-}
-for _sdkman_cmd in sdk java javac jar mvn gradle kotlin spring; do
-  # shellcheck disable=SC2139
-  eval "function ${_sdkman_cmd}() { _sdkman_lazy_init ${_sdkman_cmd} \"\$@\"; }"
-done
-unset _sdkman_cmd
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 export PATH=/Users/tempdaman/.tiup/bin:$PATH
 
