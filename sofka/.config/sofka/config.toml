@@ -1,0 +1,38 @@
+# sofka configuration
+# https://crates.io/crates/sofka — a Kubernetes TUI, reimagined in Rust.
+
+# GitHub Dark skin.
+# sofka ships no `github-dark` built-in, so we start from a dark base palette
+# and override all 25 swatches with GitHub Primer dark colors. Swatch names
+# follow Catppuccin's slot layout; hex values match the k9s/zellij GitHub Dark
+# themes in this repo (background #0d1117, foreground #e6edf3).
+[skin]
+name = "catppuccin-mocha"   # dark base; every swatch is overridden below
+background = true            # paint sofka's own #0d1117 background
+
+[skin.colors]
+rosewater = "#ffdcd7"
+flamingo  = "#ffb757"
+pink      = "#f778ba"
+mauve     = "#d2a8ff"
+red       = "#f85149"
+maroon    = "#ff7b72"
+peach     = "#ffa657"
+yellow    = "#e3b341"
+green     = "#3fb950"
+teal      = "#39c5cf"
+sky       = "#56d4dd"
+sapphire  = "#79c0ff"
+blue      = "#58a6ff"
+lavender  = "#a5d6ff"
+text      = "#e6edf3"
+subtext1  = "#c9d1d9"
+subtext0  = "#b1bac4"
+overlay1  = "#8b949e"
+overlay0  = "#6e7681"
+surface2  = "#484f58"
+surface1  = "#30363d"
+surface0  = "#21262d"
+base      = "#0d1117"
+mantle    = "#010409"
+crust     = "#010409"

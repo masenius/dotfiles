@@ -18,6 +18,9 @@ default_target_type = "symbolic"
 [k9s.files]
 "k9s/.config/k9s" = "~/.config/k9s"
 
+[sofka.files]
+"sofka/.config/sofka" = "~/.config/sofka"
+
 [starship.files]
 "starship/.config/starship.toml" = "~/.config/starship.toml"
 

@@ -13,6 +13,7 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `nvim`     | `~/.config/nvim/`       |
 | `kitty`    | `~/.config/kitty/`      |
 | `k9s`      | `~/.config/k9s/`        |
+| `sofka`    | `~/.config/sofka/`      |
 | `starship` | `~/.config/starship.toml` |
 | `zellij`   | `~/.config/zellij/`     |
 | `ssh`      | `~/.ssh/config`          |
@@ -34,6 +35,7 @@ Tools referenced by the shell/config (install the ones you use):
 - **[fzf](https://github.com/junegunn/fzf)** — fuzzy finder
 - **[kitty](https://sw.kovidgoyal.net/kitty/)** — terminal
 - **[k9s](https://k9scli.io/)** — Kubernetes TUI
+- **[sofka](https://crates.io/crates/sofka)** — Kubernetes TUI (`cargo install sofka`)
 - **[zellij](https://zellij.dev/)** — terminal multiplexer
 
 ## Setup on a new machine
