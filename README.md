@@ -19,6 +19,13 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `ssh`      | `~/.ssh/config`          |
 | `opencode` | `~/.config/opencode/opencode.jsonc` |
 
+Not a dotter package, but applied by `setup.sh`:
+
+- **KDE (widescreen)** — KZones/Compact Pager plugin setup. See
+  [`kde/KDE.md`](kde/KDE.md). Settings are merged into `~/.config/kwinrc`
+  (no symlinks) by `kde/apply-kde.sh`; save GUI changes back with
+  `kde/save-kde.sh`. Requires `jq`. Skip with `./setup.sh -e kde`.
+
 ## Prerequisites
 
 Install these before deploying:
@@ -37,6 +44,7 @@ Tools referenced by the shell/config (install the ones you use):
 - **[k9s](https://k9scli.io/)** — Kubernetes TUI
 - **[sofka](https://crates.io/crates/sofka)** — Kubernetes TUI (`cargo install sofka`)
 - **[zellij](https://zellij.dev/)** — terminal multiplexer
+- **[jq](https://jqlang.github.io/jq/)** — JSON processor (used by the KDE/KZones apply & save scripts)
 
 ## Setup on a new machine
 
@@ -112,6 +120,7 @@ dotfiles/
 ├── zellij/   .config/zellij/
 ├── ssh/      config
 ├── opencode/ .config/opencode/opencode.jsonc
+├── kde/      KDE.md + kzones/ + apply-kde.sh + save-kde.sh (applied by setup.sh, not symlinked)
 └── setup.sh  # deploy helper for new machines
 ```
 

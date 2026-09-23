@@ -90,4 +90,16 @@ dotter "${deploy_args[@]}"
 # modes beyond the executable bit, so enforce 600 after checkout/symlink.
 chmod 600 "$HOME/.ssh/config"
 
+# Apply KDE plugin settings (KZones) on the widescreen setup. This is not a
+# dotter package (nothing is symlinked); it merges keys into ~/.config/kwinrc
+# via kwriteconfig. Skipped with `-e kde` or when not on a KDE machine.
+skip_kde=""
+for ex in "${excludes[@]:-}"; do
+  [ "$ex" = "kde" ] && { skip_kde="1"; break; }
+done
+if [ -z "$skip_kde" ] && [ -x "$REPO_DIR/kde/apply-kde.sh" ]; then
+  echo "== KDE =="
+  "$REPO_DIR/kde/apply-kde.sh" || echo "warning: KDE settings step failed (continuing)."
+fi
+
 echo "Done."
