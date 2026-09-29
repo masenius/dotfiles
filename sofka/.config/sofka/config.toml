@@ -4,8 +4,8 @@
 # GitHub Dark skin.
 # sofka ships no `github-dark` built-in, so we start from a dark base palette
 # and override all 25 swatches with GitHub Primer dark colors. Swatch names
-# follow Catppuccin's slot layout; hex values match the k9s/zellij GitHub Dark
-# themes in this repo (background #0d1117, foreground #e6edf3).
+# follow Catppuccin's slot layout; hex values match the zellij GitHub Dark
+# theme in this repo (background #0d1117, foreground #e6edf3).
 [skin]
 name = "catppuccin-mocha"   # dark base; every swatch is overridden below
 background = true            # paint sofka's own #0d1117 background

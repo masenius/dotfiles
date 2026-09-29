@@ -12,7 +12,6 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `zsh`      | `~/.zshrc`, `~/.zsh.d/` (macOS) |
 | `nvim`     | `~/.config/nvim/`       |
 | `kitty`    | `~/.config/kitty/`      |
-| `k9s`      | `~/.config/k9s/`        |
 | `sofka`    | `~/.config/sofka/`      |
 | `starship` | `~/.config/starship.toml` |
 | `zellij`   | `~/.config/zellij/`     |
@@ -28,11 +27,28 @@ Not a dotter package, but applied by `setup.sh`:
 
 ## Prerequisites
 
-Install these before deploying:
+The easiest way to install everything is the installer, which supports
+Debian/Ubuntu, Fedora/RHEL/CentOS, and macOS:
+
+```bash
+./install-prereqs.sh            # install missing tools and update existing ones
+./install-prereqs.sh --dry-run  # preview the commands without running them
+./install-prereqs.sh --no-update
+```
+
+It installs **dotter**, **git**, **jq**, **neovim**, **starship**, **zoxide**,
+**fzf**, **kitty**, **sofka**, **zellij**, and the **JetBrainsMono Nerd Font**
+via cargo-binstall (for the Rust tools), the official upstream binaries (fzf,
+kitty, neovim, the Nerd Font), or the system package manager. On macOS it
+prefers Homebrew. Re-running is safe and upgrades tools to the latest release.
+
+To install manually instead:
 
 - **[dotter](https://github.com/SuperCuber/dotter)** — the dotfile manager
   - `cargo install dotter`, or `brew install dotter`, or (Arch) `paru -S dotter-rs-bin`
 - **git**
+- **[JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads)** —
+  required by `kitty.conf` (`font_family family="JetBrainsMono Nerd Font"`)
 
 Tools referenced by the shell/config (install the ones you use):
 
@@ -41,7 +57,6 @@ Tools referenced by the shell/config (install the ones you use):
 - **[zoxide](https://github.com/ajeetdsouza/zoxide)** — smarter `cd`
 - **[fzf](https://github.com/junegunn/fzf)** — fuzzy finder
 - **[kitty](https://sw.kovidgoyal.net/kitty/)** — terminal
-- **[k9s](https://k9scli.io/)** — Kubernetes TUI
 - **[sofka](https://crates.io/crates/sofka)** — Kubernetes TUI (`cargo install sofka`)
 - **[zellij](https://zellij.dev/)** — terminal multiplexer
 - **[jq](https://jqlang.github.io/jq/)** — JSON processor (used by the KDE/KZones apply & save scripts)
@@ -53,7 +68,10 @@ Tools referenced by the shell/config (install the ones you use):
 git clone https://github.com/masenius/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 
-# 2. Run the setup script. It writes .dotter/local.toml (gitignored,
+# 2. Install prerequisites (dotter, git, CLI tools, Nerd Font).
+./install-prereqs.sh
+
+# 3. Run the setup script. It writes .dotter/local.toml (gitignored,
 #    per-machine), previews the changes, then deploys the symlinks.
 #    By default ALL packages are deployed.
 ./setup.sh
@@ -115,13 +133,13 @@ dotfiles/
 ├── zsh/      .zshrc, .zsh.d/
 ├── nvim/     .config/nvim/
 ├── kitty/    .config/kitty/
-├── k9s/      .config/k9s/
 ├── starship/ .config/starship.toml
 ├── zellij/   .config/zellij/
 ├── ssh/      config
 ├── opencode/ .config/opencode/opencode.jsonc
 ├── kde/      KDE.md + kzones/ + apply-kde.sh + save-kde.sh (applied by setup.sh, not symlinked)
-└── setup.sh  # deploy helper for new machines
+├── setup.sh  # deploy helper for new machines
+└── install-prereqs.sh  # installs prerequisites (Debian/Fedora/macOS)
 ```
 
 ## Adding a new config
