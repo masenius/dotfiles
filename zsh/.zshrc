@@ -47,14 +47,11 @@ alias kctx=kubectx
 alias kns=kubens
 
 alias gauth='gcloud auth login && gcloud auth application-default login'
-alias kk='EDITOR=nvim k9s'
 
 alias j22="export JAVA_HOME=`/usr/libexec/java_home -v 22`; java -version"
 alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
 alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
 alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
-
-export K9S_CONFIG_DIR=$HOME/.config/k9s
 
 eval "$(starship init zsh)"
 

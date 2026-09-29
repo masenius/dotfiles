@@ -15,9 +15,6 @@ default_target_type = "symbolic"
 [kitty.files]
 "kitty/.config/kitty" = "~/.config/kitty"
 
-[k9s.files]
-"k9s/.config/k9s" = "~/.config/k9s"
-
 [sofka.files]
 "sofka/.config/sofka" = "~/.config/sofka"
 
