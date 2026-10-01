@@ -1,3 +1,6 @@
+# Vi keybindings in readline
+set -o vi
+
 # Neovim
 export EDITOR=nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"

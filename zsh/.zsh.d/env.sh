@@ -1,5 +1,8 @@
 # Environment / tool setup shared in spirit with the bash config.
 
+# Vi keybindings
+bindkey -v
+
 export EDITOR=nvim
 
 # Kubernetes
