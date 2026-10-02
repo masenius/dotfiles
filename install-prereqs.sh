@@ -96,24 +96,33 @@ KITTY_APP="$HOME/.local/kitty.app"
 
 NVIM_DIR="nvim-linux-x86_64"
 FZF_ARCH="amd64"
+LAZYGIT_ARCH="x86_64"
 if [ "$ARCH" = aarch64 ]; then
   NVIM_DIR="nvim-linux-arm64"
   FZF_ARCH="arm64"
+  LAZYGIT_ARCH="arm64"
 fi
 
 load_cargo() {
   export PATH="$CARGO_BIN:$PATH"
+  if [ "$OS" = macos ] && have brew; then
+    local rustup_prefix
+    rustup_prefix="$(brew --prefix rustup 2>/dev/null || true)"
+    [ -n "$rustup_prefix" ] && [ -d "$rustup_prefix/bin" ] && export PATH="$rustup_prefix/bin:$PATH"
+  fi
   [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
   return 0
 }
 
 ensure_rust() {
   load_cargo
-  if ! have cargo; then
+  if ! cargo --version >/dev/null 2>&1; then
     log "Installing Rust toolchain (rustup)"
     if [ "$OS" = macos ]; then
       run brew install rustup
-      run rustup-init -y --no-modify-path --profile minimal
+      load_cargo
+      run rustup set profile minimal
+      run rustup default stable
     else
       run_sh "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path --profile minimal"
     fi
@@ -135,7 +144,11 @@ ensure_binstall() {
     fi
   elif [ "$UPDATE" -eq 1 ]; then
     log "Updating cargo-binstall"
-    run cargo binstall --no-confirm cargo-binstall
+    if [ "$OS" = macos ]; then
+      run brew upgrade cargo-binstall
+    else
+      run cargo binstall --no-confirm cargo-binstall
+    fi
   fi
   load_cargo
 }
@@ -191,6 +204,24 @@ install_fzf() {
   rm -rf "$tmp"
 }
 
+install_lazygit() {
+  if [ "$UPDATE" -eq 0 ] && have lazygit; then
+    return 0
+  fi
+  log "Installing/updating lazygit"
+  local tag version asset tmp
+  tag="$(curl -fsSLI -o /dev/null -w '%{url_effective}' https://github.com/jesseduffield/lazygit/releases/latest)"
+  tag="${tag##*/}"
+  version="${tag#v}"
+  asset="lazygit_${version}_Linux_${LAZYGIT_ARCH}.tar.gz"
+  tmp="$(mktemp -d)"
+  run mkdir -p "$LOCAL_BIN"
+  run curl -fsSL -o "$tmp/lazygit.tar.gz" "https://github.com/jesseduffield/lazygit/releases/download/${tag}/${asset}"
+  run tar -C "$tmp" -xzf "$tmp/lazygit.tar.gz" lazygit
+  run install -m 0755 "$tmp/lazygit" "$LOCAL_BIN/lazygit"
+  rm -rf "$tmp"
+}
+
 install_neovim() {
   if [ "$UPDATE" -eq 0 ] && [ -x "/opt/$NVIM_DIR/bin/nvim" ]; then
     return 0
@@ -238,6 +269,7 @@ install_linux_common() {
     cargo_tool "$crate"
   done
   install_fzf
+  install_lazygit
   install_neovim
   install_kitty
   install_nerd_font
@@ -278,7 +310,7 @@ install_macos() {
   fi
   log "Homebrew packages"
   run brew update
-  local formulae=(git jq fzf neovim starship zoxide zellij dotter)
+  local formulae=(git jq fzf lazygit neovim starship zoxide zellij dotter)
   local casks=(kitty font-jetbrains-mono-nerd-font)
   run brew install "${formulae[@]}"
   run brew install --cask "${casks[@]}"
