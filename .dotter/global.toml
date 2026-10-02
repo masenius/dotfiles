@@ -30,5 +30,8 @@ default_target_type = "symbolic"
 [opencode.files]
 "opencode/.config/opencode/opencode.jsonc" = "~/.config/opencode/opencode.jsonc"
 
+[aerospace.files]
+"aerospace/.config/aerospace/aerospace.toml" = "~/.config/aerospace/aerospace.toml"
+
 [variables]
 # reserved for future per-machine values
