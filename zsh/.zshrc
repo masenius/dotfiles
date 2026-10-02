@@ -48,10 +48,6 @@ alias kns=kubens
 
 alias gauth='gcloud auth login && gcloud auth application-default login'
 
-alias j22="export JAVA_HOME=`/usr/libexec/java_home -v 22`; java -version"
-alias j17="export JAVA_HOME=`/usr/libexec/java_home -v 17`; java -version"
-alias j11="export JAVA_HOME=`/usr/libexec/java_home -v 11`; java -version"
-alias j8="export JAVA_HOME=`/usr/libexec/java_home -v 1.8`; java -version"
 
 eval "$(starship init zsh)"
 
