@@ -54,6 +54,9 @@ while IFS= read -r line; do
     esac
     key="${line%%=*}"
     value="${line#*=}"
+    # Multi-value keys store items separated by a literal "\n" in settings.conf;
+    # convert those to real newlines so KWin gets a proper multi-line list.
+    value="${value//\\n/$'\n'}"
     "$KWRITE" --file kwinrc --group Script-kzones --key "$key" "$value"
 done < "$SETTINGS"
 

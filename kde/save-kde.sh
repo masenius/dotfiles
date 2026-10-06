@@ -48,8 +48,13 @@ scalar_keys=(
 {
     echo "# KZones [Script-kzones] scalar settings (non-layout)."
     echo "# Layouts live in layouts.json. Applied by ../apply-kde.sh."
+    echo "# Multi-value keys (e.g. filterList) use a literal \\n as the item"
+    echo "# separator; apply-kde.sh/save-kde.sh translate to/from real newlines."
     for key in "${scalar_keys[@]}"; do
         value="$("$KREAD" --file kwinrc --group Script-kzones --key "$key" || true)"
+        # Collapse any real newlines (multi-value keys like filterList) back to a
+        # literal "\n" so each setting stays on a single line in settings.conf.
+        value="${value//$'\n'/\\n}"
         echo "$key=$value"
     done
 } > "$SETTINGS"
