@@ -1,5 +1,6 @@
 alias gauth='gcloud auth login && gcloud auth application-default login'
 alias k='kubectl'
+alias kk='sofka'
 alias v='nvim'
 alias zj='zellij'
 alias xo='xdg-open'
