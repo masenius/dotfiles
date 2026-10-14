@@ -18,6 +18,7 @@ a symlink-based dotfile manager. Config lives in this repo and is symlinked into
 | `ssh`      | `~/.ssh/config`          |
 | `opencode` | `~/.config/opencode/opencode.jsonc` |
 | `aerospace` | `~/.config/aerospace/aerospace.toml` (macOS) |
+| `wgq`      | `~/.local/bin/wgq` (laptop) |
 
 Not a dotter package, but applied by `setup.sh`:
 
@@ -76,10 +77,10 @@ cd ~/dotfiles
 # 3. Run the setup script. It writes .dotter/local.toml (gitignored,
 #    per-machine), previews the changes, then deploys the symlinks.
 #    A mode is required; it picks which packages to skip:
-#      mac      excludes bash, kde
+#      mac      excludes bash, kde, wgq
 #      laptop   excludes zsh, kde, aerospace
-#      desktop  excludes zsh, aerospace
-#      server   excludes zsh, kde, aerospace, kitty
+#      desktop  excludes zsh, aerospace, wgq
+#      server   excludes zsh, kde, aerospace, kitty, wgq
 ./setup.sh mac
 
 # Exclude more packages with -e/--exclude (repeatable):
@@ -143,6 +144,7 @@ dotfiles/
 ├── ssh/      config
 ├── opencode/ .config/opencode/opencode.jsonc
 ├── aerospace/ .config/aerospace/aerospace.toml
+├── wgq/      .local/bin/wgq
 ├── kde/      KDE.md + kzones/ + apply-kde.sh + save-kde.sh (applied by setup.sh, not symlinked)
 ├── setup.sh  # deploy helper for new machines
 └── install-prereqs.sh  # installs prerequisites (Debian/Fedora/macOS)

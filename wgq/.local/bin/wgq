@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# wgq - WireGuard quick connect using ~/.wg/<location>-<scope>.conf
+set -euo pipefail
+
+WG_DIR="${WG_DIR:-$HOME/.wg}"
+
+usage() {
+  cat >&2 <<'EOF'
+usage:
+  wgq up [location] [scope]   bring up <location>-<scope>.conf (defaults: home all)
+  wgq down                    bring down every running WireGuard interface
+EOF
+  exit 1
+}
+
+[ "$#" -ge 1 ] || usage
+
+case "$1" in
+  up)
+    shift
+    [ "$#" -le 2 ] || usage
+    location="${1:-home}"
+    scope="${2:-all}"
+    conf="$WG_DIR/${location}-${scope}.conf"
+    if [ ! -f "$conf" ]; then
+      printf 'wgq: config not found: %s\n' "$conf" >&2
+      exit 1
+    fi
+    wg-quick up "$conf"
+    ;;
+  down)
+    shift
+    [ "$#" -eq 0 ] || usage
+    ifaces="$(wg show interfaces)"
+    if [ -z "$ifaces" ]; then
+      printf 'wgq: no WireGuard interface is up\n'
+      exit 0
+    fi
+    for iface in $ifaces; do
+      conf="$WG_DIR/${iface}.conf"
+      if [ -f "$conf" ]; then
+        wg-quick down "$conf"
+      else
+        wg-quick down "$iface"
+      fi
+    done
+    ;;
+  *)
+    usage
+    ;;
+esac

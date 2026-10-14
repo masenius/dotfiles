@@ -33,5 +33,8 @@ default_target_type = "symbolic"
 [aerospace.files]
 "aerospace/.config/aerospace/aerospace.toml" = "~/.config/aerospace/aerospace.toml"
 
+[wgq.files]
+"wgq/.local/bin/wgq" = "~/.local/bin/wgq"
+
 [variables]
 # reserved for future per-machine values

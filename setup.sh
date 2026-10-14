@@ -7,10 +7,10 @@
 #
 # Modes (each deploys ALL packages from .dotter/global.toml, plus the
 # non-dotter `kde` step, minus the excludes below):
-#   mac      excludes bash, kde
+#   mac      excludes bash, kde, wgq
 #   laptop   excludes zsh, kde, aerospace
-#   desktop  excludes zsh, aerospace
-#   server   excludes zsh, kde, aerospace, kitty
+#   desktop  excludes zsh, aerospace, wgq
+#   server   excludes zsh, kde, aerospace, kitty, wgq
 #
 # -e/--exclude PKG  additionally exclude a package (repeatable)
 # -i/--include PKG  re-include a package excluded by the mode (repeatable)
@@ -55,10 +55,10 @@ while [ "$#" -gt 0 ]; do
 done
 
 case "$mode" in
-  mac)     mode_excludes=(bash kde) ;;
+  mac)     mode_excludes=(bash kde wgq) ;;
   laptop)  mode_excludes=(zsh kde aerospace) ;;
-  desktop) mode_excludes=(zsh aerospace) ;;
-  server)  mode_excludes=(zsh kde aerospace kitty) ;;
+  desktop) mode_excludes=(zsh aerospace wgq) ;;
+  server)  mode_excludes=(zsh kde aerospace kitty wgq) ;;
   "")      echo "error: mode is required" >&2; usage ;;
   *)       echo "error: unknown mode: $mode" >&2; usage ;;
 esac
