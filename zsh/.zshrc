@@ -1,5 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
 
 # Completion system. Run the full security audit + dump rebuild at most once
 # per 24h; use the fast `-C` path (skip audit, trust the cached dump) otherwise.
