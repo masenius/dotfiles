@@ -18,6 +18,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
+# Google Cloud SDK completion
+for _gcloud_sdk in \
+  /usr/lib/google-cloud-sdk \
+  /usr/share/google-cloud-sdk \
+  /snap/google-cloud-cli/current \
+  "$HOME/google-cloud-sdk"; do
+  if [ -f "$_gcloud_sdk/completion.bash.inc" ]; then
+    . "$_gcloud_sdk/completion.bash.inc"
+    break
+  fi
+done
+unset _gcloud_sdk
+
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 . "$HOME/.cargo/env"

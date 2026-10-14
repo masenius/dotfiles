@@ -19,6 +19,9 @@ fi
 unset _zdump_stale
 { [[ ! -s "${_zcompdump}.zwc" || "$_zcompdump" -nt "${_zcompdump}.zwc" ]] && zcompile "$_zcompdump" } &!
 
+# Google Cloud SDK completion
+[[ -f /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc ]] && source /opt/homebrew/share/google-cloud-sdk/completion.zsh.inc
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
