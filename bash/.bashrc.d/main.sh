@@ -5,6 +5,10 @@ set -o vi
 export EDITOR=nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
+# GPG: terminal pinentry over SSH, desktop dialog otherwise
+export GPG_TTY=$(tty)
+[ -n "$SSH_CONNECTION" ] && export PINENTRY_USER_DATA=ssh
+
 # Kubernetes
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export KUBE_CONFIG_PATH=$HOME/.kube/config

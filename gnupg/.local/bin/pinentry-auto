@@ -1,0 +1,7 @@
+#!/bin/sh
+# Terminal prompt for SSH sessions (PINENTRY_USER_DATA=ssh is exported by the
+# shell config), otherwise the normal desktop prompt.
+if [ "$PINENTRY_USER_DATA" = "ssh" ]; then
+    exec /usr/bin/pinentry-curses "$@"
+fi
+exec /usr/bin/pinentry "$@"

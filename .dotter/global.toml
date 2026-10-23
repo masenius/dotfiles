@@ -36,5 +36,9 @@ default_target_type = "symbolic"
 [wgq.files]
 "wgq/.local/bin/wgq" = "~/.local/bin/wgq"
 
+[gnupg.files]
+"gnupg/.gnupg/gpg-agent.conf" = "~/.gnupg/gpg-agent.conf"
+"gnupg/.local/bin/pinentry-auto" = "~/.local/bin/pinentry-auto"
+
 [variables]
 # reserved for future per-machine values
